@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Home() {
+export default function Table() {
   const classes = useStyles();
 
   return (
@@ -34,7 +34,7 @@ export default function Home() {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography variant="h2">Home</Typography>
+        <Typography variant="h2">Gallery</Typography>
         <Typography paragraph>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
           ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
@@ -45,7 +45,6 @@ export default function Home() {
           purus viverra accumsan in. In hendrerit gravida rutrum quisque non
           tellus orci ac.
         </Typography>
-        <br />
         <br />
 
       </main>
