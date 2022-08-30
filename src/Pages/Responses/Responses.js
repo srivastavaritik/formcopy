@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
-import TableCopy from "../../commons/Table/TableCopy";
+import Table from "../../commons/Table/Table";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Gallery() {
+export default function Responses() {
   const classes = useStyles();
 
   return (
@@ -33,15 +33,23 @@ export default function Gallery() {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography variant="h2">Infinite Scroll</Typography>
+        <Typography variant="h2">Responses</Typography>
         <Typography paragraph>
-          Infinite Scroll with dummy data being recived from an API.
+          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
+          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
+          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
+          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
+          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
+          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
+          tellus orci ac.
         </Typography>
         <br />
         <br />
-        <TableCopy/>
 
+        <Table />
       </main>
+      
     </div>
   );
 }

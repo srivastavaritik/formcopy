@@ -1,7 +1,8 @@
 import Home from './Pages/Home/Home'
 import Navbar from './commons/Navbar/Navbar'
-import Form from './commons/Form/Form'
-import Table from './commons/Table/Table'
+// import Form from './commons/Form/Form'
+import FormPut from './commons/Form/FormPut'
+import Responses from './Pages/Responses/Responses'
 import Gallery from './commons/Gallery/Gallery'
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -26,9 +27,9 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/form" element={<Form />} />
-        <Route path="/responses" element={<Table />} />
-        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/form" element={<FormPut />} />
+        <Route path="/responses" element={<Responses />} />
+        <Route path="/infinite" element={<Gallery />} />
       </Routes>
     </div>
   );

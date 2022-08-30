@@ -56,7 +56,7 @@ export default function Home() {
   const inputType = ["name", "number", "date", "mail", "password"];
   const nameRegex = "^[a-zA-Z]*$";
   const mailRegex = "[a-z0-9]+@[a-z]+.[a-z]{2,3}";
-  const mobileRegex = "[0-9]{10}$";
+  const mobileRegex = "^[0-9]{10}*$";
   const passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,15}$";
   const dateRegex = "";
 
@@ -68,8 +68,8 @@ export default function Home() {
 
 
   // Validation for form
-  let error = [];
-  let [text, setText] = useState("");
+  // let error = [];
+  // let [text, setText] = useState("");
   let [input, setInput] = useState({
     name: "",
     number: "",
@@ -260,10 +260,6 @@ export default function Home() {
         </Button>
         <br />
         <br />
-
-        {/* <Typography>
-          {text}
-        </Typography> */}
       </main>
     </div>
   );

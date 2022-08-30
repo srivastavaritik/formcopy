@@ -24,6 +24,7 @@ import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    width: '100',
     display: 'flex',
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
@@ -72,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
+    width: 0,
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9) + 1,
     },
@@ -108,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
-    width: '100%',
+    width: '70%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
@@ -131,7 +132,10 @@ const useStyles = makeStyles((theme) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
-    width: '100%',
+    width: '0ch',
+      '&:focus': {
+        width: '12ch',
+      },
     [theme.breakpoints.up('sm')]: {
       width: '12ch',
       '&:focus': {
@@ -165,8 +169,8 @@ const navigation = [
     icon: '<MailIcon />'
   },
   {
-    name: 'Gallery',
-    navtag: '/gallery',
+    name: 'Infinte Scroll',
+    navtag: '/infinite',
     icon: '<MailIcon />'
   },
 ];
@@ -254,8 +258,8 @@ export default function Navbar() {
         <Divider />
         <List>
           {navigation.map((item, index) => (
-            <Link to= {item.navtag}>
-            <ListItem button style={{ textDecoration: "none" }} key={item.name}>
+            <Link key={item.name} to= {item.navtag} style={{textDecoration: 'none', color: 'black'}}>
+            <ListItem button style={{ textDecoration: "none" }} >
               <ListItemIcon className={classes.buttonstyle}>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
