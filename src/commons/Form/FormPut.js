@@ -6,10 +6,7 @@ import { lighten, makeStyles, withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { MenuItem } from "@material-ui/core";
-// import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
-import TableSortLabel from "@material-ui/core/TableSortLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Toolbar from "@material-ui/core/Toolbar";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
@@ -20,10 +17,12 @@ import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Snackbar from "@material-ui/core/Snackbar";
 
 import axios from 'axios';
 
 // import Table from "../../commons/Table/Table";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     // textAlign: "center",
     // alignItems: "center",
+    marginTop: "40px",
     display: "flex",
     justifyContent: "center"
   },
@@ -227,7 +227,7 @@ export default function LayoutTextFields() {
         handleClick();
         // getApiData();
       } else {
-        setMsg("Error occured");
+        setMsg("ERROR: Fill the form properly.");
         handleClick();
       }
     } else {
@@ -237,7 +237,7 @@ export default function LayoutTextFields() {
         handleClick();
         // getApiData();
       } else {
-        setMsg("Error occured");
+        setMsg("ERROR: No changes found.");
         handleClick();
       }
     }
@@ -436,7 +436,17 @@ export default function LayoutTextFields() {
           <br />
         </div>
 
-        <div></div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message={Msg}
+          severity="success"
+        />
 
         <br />
         <br />
