@@ -20,6 +20,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
 import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
+import PortraitIcon from "@material-ui/icons/Portrait";
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -154,24 +155,29 @@ const useStyles = makeStyles((theme) => ({
 const drawerWidth = 200
 const navigation = [
   {
-    name: 'Home',
-    navtag: '/',
-    icon: '<MailIcon />'
+    name: "Home",
+    navtag: "/",
+    icon: "<MailIcon />",
   },
   {
-    name: 'Forms',
-    navtag: '/form',
-    icon: '<MailIcon />'
+    name: "Forms",
+    navtag: "/form",
+    icon: "<MailIcon />",
   },
   {
-    name: 'Responses',
-    navtag: '/responses',
-    icon: '<MailIcon />'
+    name: "Responses",
+    navtag: "/responses",
+    icon: "<MailIcon />",
   },
   {
-    name: 'Infinte Scroll',
-    navtag: '/infinite',
-    icon: '<MailIcon />'
+    name: "Infinte Scroll",
+    navtag: "/infinite",
+    icon: "<MailIcon />",
+  },
+  {
+    name: "Student Details",
+    navtag: "/batch-details",
+    icon: "<MailIcon />",
   },
 ];
 

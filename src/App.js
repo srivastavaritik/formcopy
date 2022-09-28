@@ -9,6 +9,8 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import BatchDetails from './Pages/BatchDetails/BatchDetails'
+import List from './Pages/List/List'
 
 const useStyles = makeStyles((theme) => ({
   app: {
@@ -30,6 +32,8 @@ function App() {
         <Route path="/form" element={<FormPut />} />
         <Route path="/responses" element={<Responses />} />
         <Route path="/infinite" element={<Gallery />} />
+        <Route path='/batch-details' element={<BatchDetails/>} />
+        <Route path='/batch-details/:branch/:section' element={<List />} />
       </Routes>
     </div>
   );
