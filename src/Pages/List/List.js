@@ -2,7 +2,6 @@ import React from 'react'
 import { makeStyles } from "@material-ui/core";
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom'
-import StudentList from '../StudentList.js/StudentList';
 import SingleStudentRow from '../StudentList.js/SingleStudentRow';
 
 const useStyles = makeStyles(() => ({
@@ -32,7 +31,6 @@ const List = () => {
     
     const [token, setToken] = React.useState("");
     const [apiData, setData] = React.useState([]);
-    const [isLoading, setIsLoading] = React.useState(false);
 
     useEffect(() => {
       fetch("https://bpit-att.herokuapp.com/api/auth/admin/login/", {
@@ -48,7 +46,6 @@ const List = () => {
         .then((response) => response.json())
         .then((data) => {
           setToken(data.token);
-          // Handle data
         })
         .catch((err) => {
           console.log(err.message);

@@ -1,7 +1,5 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
-import StudentData from "../../data/studentData";
-import SingleStudentRow from "./SingleStudentRow";
 
 const useStyles = makeStyles(() => ({
   table: {
@@ -36,14 +34,6 @@ const StudentList = ({data}) => {
           <th className={classes.th}>Class Roll Number</th>
           <th className={classes.th}>Attandance Count</th>
         </tr>
-        {/* {data.map((student) => (
-          <SingleStudentRow
-            enrollment_number={data.enrollment_number}
-            name={data.name}
-            class_roll_number={data.class_roll_number}
-            attandance_count={data.attandance_count}
-          />
-        ))} */}
       </table>
     </>
   );

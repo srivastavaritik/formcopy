@@ -1,7 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useEffect } from "react";
 import OutlinedCard from "../../commons/BatchCard/OutlinedCard";
-import Batches from "../../data/batchData";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -33,7 +32,6 @@ const BatchDetails = () => {
   const classes = useStyles();
   const [token, setToken] = React.useState("");
   const [apiData, setData] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
 
   useEffect(() => {
     fetch("https://bpit-att.herokuapp.com/api/auth/admin/login/", {
@@ -49,7 +47,6 @@ const BatchDetails = () => {
       .then((response) => response.json())
       .then((data) => {
         setToken(data.token);
-        // Handle data
       })
       .catch((err) => {
         console.log(err.message);
