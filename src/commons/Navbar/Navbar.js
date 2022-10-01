@@ -198,17 +198,17 @@ export default function Navbar() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        position='fixed'
+        position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
         <Toolbar>
           <IconButton
-            color='inherit'
-            aria-label='open drawer'
+            color="inherit"
+            aria-label="open drawer"
             onClick={handleDrawerOpen}
-            edge='start'
+            edge="start"
             className={clsx(classes.menuButton, {
               [classes.hide]: open,
             })}
@@ -216,7 +216,7 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
           <div className={classes.mainBar}>
-            <Typography variant='h6' noWrap>
+            <Typography variant="h6" noWrap>
               LOGO
             </Typography>
 
@@ -226,21 +226,21 @@ export default function Navbar() {
                   <SearchIcon />
                 </div>
                 <InputBase
-                  placeholder='Search…'
+                  placeholder="Search…"
                   classes={{
                     root: classes.inputRoot,
                     input: classes.inputInput,
                   }}
-                  inputProps={{ 'aria-label': 'search' }}
+                  inputProps={{ "aria-label": "search" }}
                 />
               </div>
-              <Button color='inherit'>Login</Button>
+              <Button color="inherit">Login</Button>
             </div>
           </div>
         </Toolbar>
       </AppBar>
       <Drawer
-        variant='permanent'
+        variant="permanent"
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open,
@@ -254,7 +254,7 @@ export default function Navbar() {
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
+            {theme.direction === "rtl" ? (
               <ChevronRightIcon />
             ) : (
               <ChevronLeftIcon />
@@ -264,18 +264,26 @@ export default function Navbar() {
         <Divider />
         <List>
           {navigation.map((item, index) => (
-            <Link key={item.name} to= {item.navtag} style={{textDecoration: 'none', color: 'black'}}>
-            <ListItem button style={{ textDecoration: "none" }} >
-              <ListItemIcon className={classes.buttonstyle}>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={item.name} />
-            </ListItem>
+            <Link
+              key={item.name}
+              to={item.navtag}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <ListItem button style={{ textDecoration: "none" }}>
+                <ListItemIcon className={classes.buttonstyle}>
+                  {index === 0 && <MailIcon />}
+                  {index === 1 && <InboxIcon />}
+                  {index === 2 && <MailIcon />}
+                  {index === 3 && <InboxIcon />}
+                  {index === 4 && <PortraitIcon />}
+                </ListItemIcon>
+                <ListItemText primary={item.name} />
+              </ListItem>
             </Link>
           ))}
         </List>
         <Divider />
       </Drawer>
     </div>
-  )
+  );
 }

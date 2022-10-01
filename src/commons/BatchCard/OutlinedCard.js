@@ -1,9 +1,7 @@
-import { makeStyles, useTheme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import React from "react";
-import { useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import StudentList from "../../Pages/StudentList.js/StudentList";
 
 const useStyles = makeStyles(() => ({
 
@@ -56,9 +54,9 @@ const OutlinedCard = (props) => {
             </Modal.Header>
             <Modal.Body>
               <div className={classes.btns}>
-                <button className={classes.btn} ><Link to='/batch-details/CSE/A'>CSE-A</Link></button>
-                <button className={classes.btn} ><Link to='/batch-details/CSE/B'>CSE-B</Link></button>
-                <button className={classes.btn} ><Link to='/batch-details/CSE/C'>CSE-C</Link></button>
+                <button className={classes.btn} ><Link to='/batch-details/CSE/A/subjects/students-lists'>CSE-A</Link></button>
+                <button className={classes.btn} ><Link to='/batch-details/CSE/B/subjects/students-lists'>CSE-B</Link></button>
+                <button className={classes.btn} ><Link to='/batch-details/CSE/C/subjects/students-lists'>CSE-C</Link></button>
               </div>
             </Modal.Body>
           </Modal>

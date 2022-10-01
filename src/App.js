@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import BatchDetails from './Pages/BatchDetails/BatchDetails'
 import List from './Pages/List/List'
+import Subjects from './Pages/List/Subjects'
 
 const useStyles = makeStyles((theme) => ({
   app: {
@@ -26,14 +27,21 @@ function App() {
 
   return (
     <div className={classes.app}>
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/form" element={<FormPut />} />
         <Route path="/responses" element={<Responses />} />
         <Route path="/infinite" element={<Gallery />} />
-        <Route path='/batch-details' element={<BatchDetails/>} />
-        <Route path='/batch-details/:branch/:section' element={<List />} />
+        <Route path="/batch-details" element={<BatchDetails />} />
+        <Route
+          path="/batch-details/:branch/:section/subjects/students-lists"
+          element={<List />}
+        />
+        <Route
+          path="/batch-details/:branch/:section/subjects"
+          element={<Subjects />}
+        />
       </Routes>
     </div>
   );
