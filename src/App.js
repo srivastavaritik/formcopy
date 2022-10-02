@@ -12,6 +12,7 @@ import {
 import BatchDetails from './Pages/BatchDetails/BatchDetails'
 import List from './Pages/List/List'
 import Subjects from './Pages/List/Subjects'
+import Login from './Pages/Login/Login'
 
 const useStyles = makeStyles((theme) => ({
   app: {
@@ -29,7 +30,8 @@ function App() {
     <div className={classes.app}>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Home />} />
         <Route path="/form" element={<FormPut />} />
         <Route path="/responses" element={<Responses />} />
         <Route path="/infinite" element={<Gallery />} />

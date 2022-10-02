@@ -33,24 +33,8 @@ const List = () => {
     const [apiData, setData] = React.useState([]);
 
     useEffect(() => {
-      fetch("https://bpit-att.herokuapp.com/api/auth/admin/login/", {
-        method: "POST",
-        body: JSON.stringify({
-          email: "a@a.com",
-          password: "a",
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setToken(data.token);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    });
+      setToken(JSON.parse(localStorage.getItem('user')).token)
+    },[]);
     const getData = async () => {
       const requestOptions = {
         method: "GET",

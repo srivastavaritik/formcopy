@@ -8,12 +8,6 @@ const useStyles = makeStyles(() => ({
     width: "100%",
   },
   th: {
-    border: "1px solid black",
-    textAlign: "left",
-    padding: ".5rem",
-  },
-  td: {
-    border: "1px solid black",
     textAlign: "left",
     padding: ".5rem",
   },
@@ -32,7 +26,7 @@ const StudentList = ({data}) => {
           <th className={classes.th}>Enrollment Number</th>
           <th className={classes.th}>Name</th>
           <th className={classes.th}>Class Roll Number</th>
-          <th className={classes.th}>Attandance Count</th>
+          <th className={classes.th}>Attendance Count</th>
         </tr>
       </table>
     </>

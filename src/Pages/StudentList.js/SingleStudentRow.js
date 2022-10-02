@@ -2,8 +2,12 @@ import { makeStyles } from "@material-ui/core";
 import React from "react";
 
 const useStyles = makeStyles(() => ({
+  
+  th:{
+    border:"3px solid red"
+  },
   td: {
-    border: "2px solid black",
+    border: "2px solid red",
     textAlign: "left",
     padding: ".75rem",
   },
