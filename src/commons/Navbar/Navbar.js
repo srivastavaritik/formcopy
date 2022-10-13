@@ -249,7 +249,7 @@ export default function Navbar() {
               </div>
               <Button color="inherit" onClick={logOutHandler}>
                 <Link to="/login" className={classes.Link}>
-                  {logLabel}
+                  Logout
                 </Link>
               </Button>
             </div>

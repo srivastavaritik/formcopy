@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useEffect } from "react";
 import OutlinedCard from "../../commons/BatchCard/OutlinedCard";
+import Navbar from "../../commons/Navbar/Navbar";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -72,20 +73,21 @@ const BatchDetails = () => {
     getData();
   });
   const AllBatches = new Set();
-  Array.from(apiData).map((data) => (
-    AllBatches.add(data.branch_name)
-  ));
+  Array.from(apiData).map((data) => AllBatches.add(data.branch_name));
   return (
-    <div className={classes.container}>
-      <div className={classes.headLine}>BATCH DETAILS</div>
-      <div className={classes.batchContainer}>
-        {Array.from(AllBatches).map(batch => (
-          <span className={classes.batchName}>
-            <OutlinedCard name={batch} />
-          </span>
-        ))}
+    <>
+      <Navbar />
+      <div className={classes.container}>
+        <div className={classes.headLine}>BATCH DETAILS</div>
+        <div className={classes.batchContainer}>
+          {Array.from(AllBatches).map((batch) => (
+            <span className={classes.batchName}>
+              <OutlinedCard name={batch} />
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

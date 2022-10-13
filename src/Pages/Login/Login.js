@@ -1,12 +1,17 @@
-import { Button, makeStyles, TextField } from "@material-ui/core";
+import { AppBar, Box, Button, IconButton, makeStyles, TextField, Toolbar, Typography } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 
 const useStyles = makeStyles(() => ({
+  root:{
+    display:"block",
+    width:"100%"
+  },
   form: {
+    width:'fit-content',
     margin: "auto",
     background: "#b7c2d236",
-    marginTop: "7rem",
+    marginTop: "4rem",
     padding: "4rem",
     borderRadius: "1.5rem",
     boxShadow: "1px 1px 1rem",
@@ -75,32 +80,43 @@ const Login = () => {
   };
   const classes = useStyles();
   return (
-    <form className={classes.form} onSubmit={loginHandler}>
-      <h3 className={classes.heading}>Sign In</h3>
-      <div className={classes.mb_3}>
-        <TextField
-          id="standard-basic"
-          label="Email"
-          onChange={emailChangeHandler}
-          value={email}
-          variant="standard"
-        />
-      </div>
-      <div className={classes.mb_3}>
-        <TextField
-          id="standard-basic"
-          label="Password"
-          onChange={passwordChangeHandler}
-          value={password}
-          variant="standard"
-        />
-      </div>
-      <div className={classes.grid}>
-        <Button type="submit" variant="contained">
-          Submit
-        </Button>
-      </div>
-    </form>
+    <div className={classes.root}>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              BPIT Attendance App
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <form className={classes.form} onSubmit={loginHandler}>
+        <h3 className={classes.heading}>Sign In</h3>
+        <div className={classes.mb_3}>
+          <TextField
+            id="standard-basic"
+            label="Email"
+            onChange={emailChangeHandler}
+            value={email}
+            variant="standard"
+          />
+        </div>
+        <div className={classes.mb_3}>
+          <TextField
+            id="standard-basic"
+            label="Password"
+            onChange={passwordChangeHandler}
+            value={password}
+            variant="standard"
+          />
+        </div>
+        <div className={classes.grid}>
+          <Button type="submit" variant="contained">
+            Submit
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 };
 

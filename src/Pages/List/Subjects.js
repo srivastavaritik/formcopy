@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Navbar from "../../commons/Navbar/Navbar";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -41,12 +42,15 @@ const Subjects = () => {
   });
   const newArr = {};
   return (
-    <div className={classes.container}>
-      <h1>Subjects</h1>
-      {Array.from(apiData).map((data) => (
-        <button className={classes.button}>{data.subject_name}</button>
-      ))}
-    </div>
+    <>
+    <Navbar/>
+      <div className={classes.container}>
+        <h1>Subjects</h1>
+        {Array.from(apiData).map((data) => (
+          <button className={classes.button}>{data.subject_name}</button>
+        ))}
+      </div>
+    </>
   );
 };
 

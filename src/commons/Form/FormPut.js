@@ -20,6 +20,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Snackbar from "@material-ui/core/Snackbar";
 
 import axios from 'axios';
+import Navbar from "../Navbar/Navbar";
 
 // import Table from "../../commons/Table/Table";
 
@@ -206,11 +207,11 @@ export default function LayoutTextFields() {
       isChange = true;
       newobj["name"].isErr = true;
     }
-    if (input.gender.length == 0) {
+    if (input.gender.length === 0) {
       isChange = true;
       newobj["gender"].isErr = true;
     }
-    if (input.status.length == 0) {
+    if (input.status.length === 0) {
       isChange = true;
       newobj["status"].isErr = true;
     }
@@ -220,8 +221,8 @@ export default function LayoutTextFields() {
     }
 
     setError(JSON.parse(JSON.stringify(newobj)));
-    if (isPatch == false) {
-      if (isChange == false) {
+    if (isPatch === false) {
+      if (isChange === false) {
         postandGet();
         setMsg("Successfully Submitted");
         handleClick();
@@ -231,7 +232,7 @@ export default function LayoutTextFields() {
         handleClick();
       }
     } else {
-      if (isChange == false) {
+      if (isChange === false) {
         patchApiData();
         setMsg("Successfully Submitted");
         handleClick();
@@ -267,7 +268,7 @@ export default function LayoutTextFields() {
           },
         }
       );
-      if (res.status == 201) {
+      if (res.status === 201) {
         setData([res.data, ...objdata]);
         //  getApiData();
       }
@@ -350,164 +351,168 @@ export default function LayoutTextFields() {
   }, []);
 
   return (
-    <div className={classes.root}>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <div className={classes.container}>
-          <TextField
-            label={`Enter name`}
-            variant="outlined"
-            error={err["name"].isErr}
-            className={classes.textField}
-            helperText={err["name"].isErr == true ? err["name"].msg : ""}
-            margin="normal"
-            onChange={(event) => {
-              handleData(event, "name");
-            }}
-            value={input.name}
-          ></TextField>
-          <TextField
-            label={`Enter Email`}
-            variant="outlined"
-            error={err["email"].isErr}
-            className={classes.textField}
-            helperText={err["email"].isErr == true ? err["email"].msg : ""}
-            margin="normal"
-            onChange={(event) => {
-              handleData(event, "email");
-            }}
-            value={input.email}
-          ></TextField>
-          <TextField
-            label={`Select Gender`}
-            variant="outlined"
-            select
-            error={err["gender"].isErr}
-            className={classes.textField}
-            helperText={err["gender"].isErr == true ? err["gender"].msg : ""}
-            margin="normal"
-            onChange={(event) => {
-              handleData(event, "gender");
-            }}
-            value={input.gender}
-          >
-            <MenuItem value="male">Male</MenuItem>
-            <MenuItem value="female">Female</MenuItem>
-          </TextField>
-          <TextField
-            label={`Select Status`}
-            variant="outlined"
-            select
-            error={err["status"].isErr}
-            className={classes.textField}
-            helperText={err["status"].isErr == true ? err["status"].msg : ""}
-            margin="normal"
-            onChange={(event) => {
-              handleData(event, "status");
-            }}
-            value={input.status}
-          >
-            <MenuItem value="Active">Active</MenuItem>
-            <MenuItem value="inactive">Inactive</MenuItem>
-          </TextField>
+    <>
+    <Navbar/>
+      <div className={classes.root}>
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          <div className={classes.container}>
+            <TextField
+              label={`Enter name`}
+              variant="outlined"
+              error={err["name"].isErr}
+              className={classes.textField}
+              helperText={err["name"].isErr === true ? err["name"].msg : ""}
+              margin="normal"
+              onChange={(event) => {
+                handleData(event, "name");
+              }}
+              value={input.name}
+            ></TextField>
+            <TextField
+              label={`Enter Email`}
+              variant="outlined"
+              error={err["email"].isErr}
+              className={classes.textField}
+              helperText={err["email"].isErr === true ? err["email"].msg : ""}
+              margin="normal"
+              onChange={(event) => {
+                handleData(event, "email");
+              }}
+              value={input.email}
+            ></TextField>
+            <TextField
+              label={`Select Gender`}
+              variant="outlined"
+              select
+              error={err["gender"].isErr}
+              className={classes.textField}
+              helperText={err["gender"].isErr === true ? err["gender"].msg : ""}
+              margin="normal"
+              onChange={(event) => {
+                handleData(event, "gender");
+              }}
+              value={input.gender}
+            >
+              <MenuItem value="male">Male</MenuItem>
+              <MenuItem value="female">Female</MenuItem>
+            </TextField>
+            <TextField
+              label={`Select Status`}
+              variant="outlined"
+              select
+              error={err["status"].isErr}
+              className={classes.textField}
+              helperText={err["status"].isErr === true ? err["status"].msg : ""}
+              margin="normal"
+              onChange={(event) => {
+                handleData(event, "status");
+              }}
+              value={input.status}
+            >
+              <MenuItem value="Active">Active</MenuItem>
+              <MenuItem value="inactive">Inactive</MenuItem>
+            </TextField>
+          </div>
+          <div className={classes.submit}>
+            <Button
+              onClick={() => {
+                checkValidate();
+              }}
+              variant="contained"
+              size="large"
+              color="primary"
+            >
+              SUBMIT
+            </Button>
 
-        </div>
-        <div className={classes.submit}>
-          <Button
-            onClick={() => {
-              checkValidate();
-            }}
-            variant="contained"
-            size="large"
-            color="primary"
-          >
-            SUBMIT
-          </Button>
+            <Button
+              onClick={newForm}
+              variant="contained"
+              size="large"
+              color="primary"
+            >
+              NEW FORM
+            </Button>
+            <br />
+            <br />
+          </div>
 
-          <Button
-            onClick={newForm}
-            variant="contained"
-            size="large"
-            color="primary"
-          >
-            NEW FORM
-          </Button>
+          <Snackbar
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            message={Msg}
+            severity="success"
+          />
+
           <br />
           <br />
-        </div>
 
-        <Snackbar
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          open={open}
-          autoHideDuration={6000}
-          onClose={handleClose}
-          message={Msg}
-          severity="success"
-        />
+          {/* <Table /> */}
 
-        <br />
-        <br />
-
-        {/* <Table /> */}
-
-        {objdata.length == 0 ? (
-        <></>
-      ) : (
-        <Paper className={classes.paper}>
-          <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell>Name</StyledTableCell>
-                  <StyledTableCell align="">Email</StyledTableCell>
-                  <StyledTableCell align="">Gender</StyledTableCell>
-                  <StyledTableCell align="">Status</StyledTableCell>
-                  <StyledTableCell align="">Edit</StyledTableCell>
-                  <StyledTableCell align="">Delete</StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {objdata.map((row) => (
-                  <StyledTableRow key={row.name}>
-                    <StyledTableCell component="th" scope="row">
-                      {row.name}
-                    </StyledTableCell>
-                    <StyledTableCell >{row.email}</StyledTableCell>
-                    <StyledTableCell >{row.gender}</StyledTableCell>
-                    <StyledTableCell >{row.status}</StyledTableCell>
-                    <StyledTableCell >
-                      <IconButton
-                        value={row.id}
-                        aria-label="edit"
-                        className={classes.margin}
-                        onClick={()=>
-                        {handleEdit(row)}}
-                      >
-                        <EditIcon fontSize="small" />
-                      </IconButton>
-                    </StyledTableCell>
-                    <StyledTableCell>
-                      <IconButton
-                        value={row.id}
-                        aria-label="delete"
-                        className={classes.margin}
-                        onClick={()=>
-                          {handleDelete(row)}}
-                      >
-                        <DeleteIcon fontSize="small" />
-                      </IconButton>
-                    </StyledTableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Paper>
-      )}
-      </main>
-    </div>
+          {objdata.length === 0 ? (
+            <></>
+          ) : (
+            <Paper className={classes.paper}>
+              <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="customized table">
+                  <TableHead>
+                    <TableRow>
+                      <StyledTableCell>Name</StyledTableCell>
+                      <StyledTableCell align="">Email</StyledTableCell>
+                      <StyledTableCell align="">Gender</StyledTableCell>
+                      <StyledTableCell align="">Status</StyledTableCell>
+                      <StyledTableCell align="">Edit</StyledTableCell>
+                      <StyledTableCell align="">Delete</StyledTableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {objdata.map((row) => (
+                      <StyledTableRow key={row.name}>
+                        <StyledTableCell component="th" scope="row">
+                          {row.name}
+                        </StyledTableCell>
+                        <StyledTableCell>{row.email}</StyledTableCell>
+                        <StyledTableCell>{row.gender}</StyledTableCell>
+                        <StyledTableCell>{row.status}</StyledTableCell>
+                        <StyledTableCell>
+                          <IconButton
+                            value={row.id}
+                            aria-label="edit"
+                            className={classes.margin}
+                            onClick={() => {
+                              handleEdit(row);
+                            }}
+                          >
+                            <EditIcon fontSize="small" />
+                          </IconButton>
+                        </StyledTableCell>
+                        <StyledTableCell>
+                          <IconButton
+                            value={row.id}
+                            aria-label="delete"
+                            className={classes.margin}
+                            onClick={() => {
+                              handleDelete(row);
+                            }}
+                          >
+                            <DeleteIcon fontSize="small" />
+                          </IconButton>
+                        </StyledTableCell>
+                      </StyledTableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Paper>
+          )}
+        </main>
+      </div>
+    </>
   );
 }

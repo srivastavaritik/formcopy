@@ -28,7 +28,6 @@ function App() {
 
   return (
     <div className={classes.app}>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Home />} />

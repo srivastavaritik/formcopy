@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core";
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import SingleStudentRow from '../StudentList.js/SingleStudentRow';
+import Navbar from '../../commons/Navbar/Navbar';
 
 const useStyles = makeStyles(() => ({
   table: {
@@ -57,24 +58,27 @@ const List = () => {
     const classes = useStyles();
 
     return (
-      <div style={{marginTop:"5rem"}}>
-        <table className={classes.table}>
-          <tr className={classes.tr}>
-            <th className={classes.th}>Enrollment Number</th>
-            <th className={classes.th}>Name</th>
-            <th className={classes.th}>Class Roll Number</th>
-            <th className={classes.th}>Attandance Count</th>
-          </tr>
-          {Array.from(apiData).map((student) => (
-          <SingleStudentRow
-            enrollment_number={student.enrollment_number}
-            name={student.name}
-            class_roll_number={student.class_roll_number}
-            attandance_count={student.attendance_count}
-          />
-        ))}
-        </table>
-      </div>
+      <>
+      <Navbar />
+        <div style={{ marginTop: "5rem" }}>
+          <table className={classes.table}>
+            <tr className={classes.tr}>
+              <th className={classes.th}>Enrollment Number</th>
+              <th className={classes.th}>Name</th>
+              <th className={classes.th}>Class Roll Number</th>
+              <th className={classes.th}>Attandance Count</th>
+            </tr>
+            {Array.from(apiData).map((student) => (
+              <SingleStudentRow
+                enrollment_number={student.enrollment_number}
+                name={student.name}
+                class_roll_number={student.class_roll_number}
+                attandance_count={student.attendance_count}
+              />
+            ))}
+          </table>
+        </div>
+      </>
     );
 }
 
