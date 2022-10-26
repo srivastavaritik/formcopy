@@ -1,38 +1,44 @@
-import Home from './Pages/Home/Home'
-import Navbar from './commons/Navbar/Navbar'
-// import Form from './commons/Form/Form'
-import FormPut from './commons/Form/FormPut'
-import Responses from './Pages/Responses/Responses'
-import Gallery from './commons/Gallery/Gallery'
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Route,
-  Routes,
-} from "react-router-dom";
+import * as React from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Dashboard from './components/home/dashboard';
+import Home from './components/home/home';
+import Student from './components/home/student/student';
+import Login from './components/login/login';
+import Faculty from './components/home/faculty/faculty';
+import { Button } from '@mui/material';
 
-const useStyles = makeStyles((theme) => ({
-  app: {
-    display:'flex',
-    justifyContent:'center',
-    alignItems:'center',
-    width:'100%'
-  }
-}))
+export default function App() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-function App() {
-  const classes = useStyles();
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: prefersDarkMode ? 'dark' : 'light',
+        },
+      }),
+    [prefersDarkMode],
+  );
 
   return (
-    <div className={classes.app}>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/form" element={<FormPut />} />
-        <Route path="/responses" element={<Responses />} />
-        <Route path="/infinite" element={<Gallery />} />
-      </Routes>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="students" element={<Student />} />
+            <Route path="faculty" element={<Faculty />} />
+          </Route>
+          <Route path="*" element={<h1>404</h1>} />
+        </Routes>
+      </BrowserRouter>
+      <Button sx={{ float: "right", position:"absolute" }} >
+        LightMode
+      </Button>
+    </ThemeProvider>
   );
 }
-
-export default App;
