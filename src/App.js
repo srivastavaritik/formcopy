@@ -36,9 +36,9 @@ export default function App() {
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
       </BrowserRouter>
-      <Button sx={{ float: "right", position:"absolute" }} >
+      {/* <Button sx={{ float: "right", position:"absolute" }} >
         LightMode
-      </Button>
+      </Button> */}
     </ThemeProvider>
   );
 }
