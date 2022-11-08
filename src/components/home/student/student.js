@@ -4,6 +4,7 @@ import { TabPanel, TabContext, TabList } from '@mui/lab';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import ListStudent from './listStudent';
+import StudentsData from './StudentsData';
 
 export default function Student() {
   const [value, setValue] = React.useState('1');
@@ -21,8 +22,8 @@ export default function Student() {
             <Tab value='2' icon={<PersonAddAlt1Icon />} iconPosition='start' label="Add Student" />
           </TabList>
           <Divider />
-          <TabPanel value='1'><ListStudent /></TabPanel>
-          <TabPanel value='2'>2</TabPanel>
+          {/* <TabPanel value='1'><ListStudent /></TabPanel> */}
+          <TabPanel value='1'><StudentsData/></TabPanel>
         </TabContext>
       </Paper>
     </Grid>

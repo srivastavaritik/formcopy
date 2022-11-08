@@ -1,7 +1,10 @@
 import * as React from "react";
+import {useState, useEffect} from 'react'
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import { useDemoData } from "@mui/x-data-grid-generator";
+import axios from "axios";
+
 
 function QuickSearchToolbar() {
   return (
@@ -16,6 +19,7 @@ function QuickSearchToolbar() {
   );
 }
 
+
 const VISIBLE_FIELDS = ["enrollment number","name", "year", "branch", "section", "group"];
 
 const getApplyFilterFnSameYear = (value) => {
@@ -29,12 +33,27 @@ const getApplyFilterFnSameYear = (value) => {
 };
 
 export default function QuickFilteringCustomLogic() {
+  const [objData, setObjData] = useState([]);
+const config = {
+  headers: {
+    Authorization: 'Token '+localStorage.getItem('token'),
+  },
+};
+  useEffect(() => {
+    axios
+      .get(`https://bpit-att.herokuapp.com/api/student/profile/search?query=`,config)
+      .then((res) => {
+        const persons = res.data;
+        setObjData(...persons);
+        console.log(persons)
+      });
+  }, []);
   const { data } = useDemoData({
     dataSet: "Employee",
     visibleFields: VISIBLE_FIELDS,
     rowLength: 100,
   });
-  console.log(data.columns);
+  // console.log(data.columns);
 
   // Otherwise filter will be applied on fields such as the hidden column id
   const columns = React.useMemo(
